@@ -9,7 +9,7 @@ npm run dev
 # http://localhost:5173/home-edu/
 ```
 
-`npm test` sprawdza treść i stan. `npm run build` sprawdza typy i tworzy `dist/`. `npm run preview` udostępnia build pod `http://localhost:4173/home-edu/`.
+`npm test` sprawdza treść, stan i licencje obrazów. `npm run format:check` sprawdza Prettier. `npm run build` sprawdza typy i tworzy `dist/`. `npm run preview` udostępnia build pod `http://localhost:4173/home-edu/`.
 
 Testy przeglądarki: `npx playwright install chromium`, następnie `npm run test:e2e`. `npm run check` uruchamia pełną walidację.
 

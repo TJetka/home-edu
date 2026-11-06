@@ -211,6 +211,9 @@ export function parseState(raw: string | null): LessonState {
     const v: unknown = JSON.parse(raw);
     if (
       !record(v) ||
+      !['status', 'view', 'returnView', 'stepId', 'atlasGroup', 'discoveryId'].every(
+        (key) => typeof v[key] === 'string',
+      ) ||
       v.version !== 1 ||
       !['new', 'active', 'completed'].includes(String(v.status)) ||
       ![...baseViews, 'atlas', 'sources'].includes(String(v.view)) ||
@@ -241,6 +244,7 @@ export function parseState(raw: string | null): LessonState {
         !Number.isInteger(a.attempts) ||
         Number(a.attempts) < 0 ||
         Number(a.attempts) > 2 ||
+        typeof a.status !== 'string' ||
         !['answering', 'hint', 'correct', 'revealed'].includes(String(a.status))
       )
         return initialState();

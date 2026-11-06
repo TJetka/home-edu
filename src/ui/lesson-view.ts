@@ -90,7 +90,7 @@ function exploration(step: Step, state: LessonState): string {
       return `<div class="yard-map" aria-label="Miejsca na podwórku">${places.map((p) => exploreButton(p.label, p.id)).join('')}</div>${found ? photo({ asset: found.asset, alt: found.caption, caption: found.caption }) : '<p class="small-note">Każde miejsce to inny trop. Wybór należy do ciebie.</p>'}`;
     }
     case 'night':
-      return `<div class="illustration">${nightDiagram()}</div><div class="actions">${exploreButton('Obejrzyj otwarty kosz', 'bin')}${exploreButton('Obejrzyj latarnię', 'lamp')}</div>${last ? `<aside class="feedback"><p>${last === 'bin' ? 'Resztki jedzenia przy koszu: łatwo dostępny pokarm.' : 'Przyjrzyj się temu, co leży na ziemi obok kosza.'}</p></aside>` : ''}`;
+      return `<div class="illustration night-board">${nightDiagram()}<button type="button" class="scene-spot scene-bin" data-action="explore" data-value="${step.id}|bin" aria-label="Kos — szczegół na rysunku">+</button><button type="button" class="scene-spot scene-lamp" data-action="explore" data-value="${step.id}|lamp" aria-label="Latarnia — szczegół na rysunku">+</button></div><div class="actions">${exploreButton('Obejrzyj otwarty kosz', 'bin')}${exploreButton('Obejrzyj latarnię', 'lamp')}</div>${last ? `<aside class="feedback"><p>${last === 'bin' ? 'Resztki jedzenia przy koszu: łatwo dostępny pokarm.' : 'Przyjrzyj się temu, co leży na ziemi obok kosza.'}</p></aside>` : ''}`;
     case 'reveal':
       return `<div class="remember"><span>Twój pierwszy typ:</span> <strong>${escape(hypotheses.find((o) => o.id === state.hypothesis)?.label ?? 'Jeszcze za mało widać')}</strong></div>${visited.includes('revealed') ? `${photo({ asset: 'mystery', alt: 'Ptak o długim ogonie i kontrastowych białych i czarnych piórach.' })}<p class="observation">Wybrany szczegół: <strong>${escape(details.find((o) => o.id === state.detail)?.label ?? 'Cały ptak')}</strong>. Obejrzyj go w powiększeniu. Teraz masz więcej informacji niż na początku.</p>` : `${mysteryCrop()}${exploreButton('Odsłoń cały kadr', 'revealed', true)}`}`;
     case 'reflection':
@@ -121,7 +121,7 @@ export function lessonView(step: Step, state: LessonState): string {
       : '';
     const order =
       step.kind === 'order'
-        ? `<ol class="order-slots" aria-label="Kolejność obserwacji">${[0, 1, 2].map((i) => `<li><span>${i + 1}</span>${escape(step.options?.find((o) => o.id === answer.selected[i])?.label ?? 'Wybierz kartę')}</li>`).join('')}</ol>${button('Cofnij', 'undo', '', 'text-button', answer.selected.length === 0 || answer.status !== 'answering')}`
+        ? `<ol class="order-slots" aria-label="Kolejność obserwacji">${[0, 1, 2].map((i) => `<li><span>${i + 1}</span>${escape(step.options?.find((o) => o.id === (solved(answer) ? step.accepted![i] : answer.selected[i]))?.label ?? 'Wybierz kartę')}${solved(answer) ? `<small>${['20 marca', '12 kwietnia', '20 kwietnia'][i]}</small>` : ''}</li>`).join('')}</ol>${button('Cofnij', 'undo', '', 'text-button', answer.selected.length === 0 || answer.status !== 'answering')}`
         : '';
     const tabs =
       step.id === 'bird-spots'

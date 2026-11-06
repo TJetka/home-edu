@@ -1,7 +1,7 @@
 # Praca w home-edu
 
 - Cel: jedna polska lekcja z `PRD(8).md`, statycznie pod `/home-edu/`. Bez kont, API, analityki i ocen punktowych.
-- Node 24, Vite + TypeScript strict; `npm ci`. Nie dodawaj bibliotek bez konkretnej potrzeby. Zależności i lockfile zmieniaj razem.
+- Node z `.node-version`, Vite + TypeScript strict; `npm ci`. Format: `npm run format`; kontrola: `npm run format:check`. Zależności i lockfile zmieniaj razem; dodawaj tylko potrzebne narzędzia.
 - Treść i stałe ID: `src/content/`; czyste przejścia stanu: `src/state.ts`; IO zapisu: `src/storage.ts`; widoki: `src/ui/`. Nie łącz kluczy odpowiedzi z kolejnością opcji.
 - Zapisuj każdą zmianę. Restart usuwa tylko `home-edu:przyroda-okolica:v1`, po potwierdzeniu. Nie ujawniaj odpowiedzi w altach przed rozwiązaniem.
 - Wszystkie potrzebne obrazy są lokalne, z autorem, źródłem, licencją i opisem zmian. Klucz musi pasować do widocznego okazu.

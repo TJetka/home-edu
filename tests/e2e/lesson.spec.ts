@@ -4,13 +4,15 @@ import { steps } from '../../src/content/lesson.ts';
 import { initialState, STORAGE_KEY } from '../../src/state.ts';
 import type { LessonState } from '../../src/types.ts';
 
-const press = (page: Page, action: string, value?: string) =>
-  page
+const press = (page: Page, action: string, value?: string) => {
+  const control = page
     .locator(
       `button[data-action="${action}"]${value === undefined ? '' : `[data-value="${value}"]`}`,
     )
-    .first()
-    .click();
+    .first();
+  // The desktop journey activates every control with the keyboard; phone uses touch-compatible clicks.
+  return page.viewportSize()?.width === 1280 ? control.press('Enter') : control.click();
+};
 
 async function seed(page: Page, state: LessonState): Promise<void> {
   await page.goto('./');

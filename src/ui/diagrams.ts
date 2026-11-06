@@ -18,7 +18,7 @@ export function bulbDiagram(layer = 'inside', planted = false): string {
       ? '<g font-family="system-ui" font-size="23" fill="#244437"><path d="M305 208h117M343 245h79" stroke="#244437" stroke-width="2"/><text x="431" y="212">pąk</text><text x="431" y="253">łuski</text><text x="431" y="281">z zapasami</text></g>'
       : '';
   return wrap(
-    `${planted ? soil : ''}${roots}${outer}${layer !== 'outer' ? inner : ''}${layer === 'inside' || layer === 'bud' ? bud : ''}${labels}`,
+    `${planted ? '<path d="M0 70h600v330H0Z" fill="#79563c"/><path d="M0 70h600" stroke="#b39365" stroke-width="12"/>' : ''}${roots}${outer}${layer !== 'outer' ? inner : ''}${layer === 'inside' || layer === 'bud' ? bud : ''}${labels}`,
     'Przekrój cebuli: mięsiste łuski otaczają młody pąk, korzenie wyrastają z płaskiego spodu.',
   );
 }

@@ -116,6 +116,17 @@ test('corrupted, incompatible and malicious saves return a fresh usable state', 
     JSON.stringify({ ...initialState(), view: 'discoveries' }),
   ];
   for (const raw of bad) assert.deepEqual(parseState(raw), initialState());
+  for (const key of [
+    'status',
+    'view',
+    'returnView',
+    'stepId',
+    'atlasGroup',
+    'discoveryId',
+  ] as const) {
+    const malformed = { ...initialState(), [key]: [initialState()[key]] };
+    assert.deepEqual(parseState(JSON.stringify(malformed)), initialState());
+  }
 });
 
 test('tiny end-to-end state pipeline visits eight stations and completes before extras', () => {
