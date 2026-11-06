@@ -42,7 +42,7 @@
     "author": "W.carter",
     "source": "https://commons.wikimedia.org/wiki/File:Part_of_birch_trunk_in_Norrkila.jpg",
     "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "modifications": "Miniatura Wikimedia; kadrowanie prezentacyjne CSS. Oryginalne kolory.",
     "sha256": "0889cc3fd63e9deb68ebb17f7c6ef672699f996f0743531b93d2e114c0b7bc2b",
     "verifiedOn": "2026-11-06"
@@ -102,7 +102,7 @@
     "author": "BotBln",
     "source": "https://commons.wikimedia.org/wiki/File:Dracaena_marginata_IndoorPlant_0605k.jpg",
     "license": "CC BY-SA 3.0",
-    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
     "modifications": "Miniatura Wikimedia; kadrowanie prezentacyjne CSS. Oryginalne kolory.",
     "sha256": "8bdda8a8d3ea0f2fd4e70ca5cc35c3bca50d39b40743941eb1e116d9915f367a",
     "verifiedOn": "2026-11-06"
@@ -126,7 +126,7 @@
     "author": "Nathaly 1106",
     "source": "https://commons.wikimedia.org/wiki/File:Helecho_de_Boston_(Nephrolepis_exaltata).jpg",
     "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "modifications": "Miniatura Wikimedia; kadrowanie prezentacyjne CSS. Oryginalne kolory.",
     "sha256": "a5c42b8060c30ab4860ad044d066b2ac4d012de1e40598a2eb987f4137f9383c",
     "verifiedOn": "2026-11-06"
@@ -174,7 +174,7 @@
     "author": "Francisco Welter-Schultes",
     "source": "https://commons.wikimedia.org/wiki/File:Coccinella-septempunctata-11-fws.jpg",
     "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "modifications": "Miniatura Wikimedia; kadrowanie prezentacyjne CSS. Oryginalne kolory.",
     "sha256": "1d1e1e868ef2fd74bcd25a8b5fa8a0a39859a4ec14d3d2db55e2cf6e938a3152",
     "verifiedOn": "2026-11-06"
@@ -182,13 +182,25 @@
   {
     "id": "linden",
     "file": "images/linden.jpg",
-    "name": "Daniel Fuchs.CC-BY-SA.Tilia cordata.Fruits.jpg",
-    "author": "Daniel Fuchs",
-    "source": "https://commons.wikimedia.org/wiki/File:Daniel_Fuchs.CC-BY-SA.Tilia_cordata.Fruits.jpg",
-    "license": "CC BY-SA 2.5",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
-    "modifications": "Miniatura Wikimedia; kadrowanie prezentacyjne CSS. Oryginalne kolory.",
-    "sha256": "90b1af68d235846847bc79a19193ce4c07dee25006df63c357192206c5b41f0e",
+    "name": "2020 year. Herbarium. Tilia cordata. img-007.jpg",
+    "author": "Dmitry Makeev",
+    "source": "https://commons.wikimedia.org/wiki/File:2020_year._Herbarium._Tilia_cordata._img-007.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "modifications": "Miniatura Wikimedia. Oryginalne kolory.",
+    "sha256": "3c8ef7953dae0e6177c7a0b0a6faaa67898cb8d829065e8cc92d19841f5f336f",
+    "verifiedOn": "2026-11-06"
+  },
+  {
+    "id": "linden-fruit",
+    "file": "images/linden-fruit.jpg",
+    "name": "Linden nuts (explored) - Flickr - hedera.baltica.jpg",
+    "author": "hedera.baltica from Wrocław, Poland",
+    "source": "https://commons.wikimedia.org/wiki/File:Linden_nuts_(explored)_-_Flickr_-_hedera.baltica.jpg",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "modifications": "Miniatura Wikimedia. Oryginalne kolory.",
+    "sha256": "915bd0941232f56b9cae5bbaf7d314cf707e9ba3f171dbc73cfd67b82485ce9c",
     "verifiedOn": "2026-11-06"
   },
   {
@@ -222,7 +234,7 @@
     "author": "Tohinde",
     "source": "https://commons.wikimedia.org/wiki/File:Orchid%C3%A9e_Phalaenopsis_blanche_en_pot_suspendu_04.jpg",
     "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "modifications": "Miniatura Wikimedia; kadrowanie prezentacyjne CSS. Oryginalne kolory.",
     "sha256": "61614577cab38a9c0710fd75f88b5f6e797326472f24195be2452d792fa4c7e5",
     "verifiedOn": "2026-11-06"

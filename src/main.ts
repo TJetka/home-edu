@@ -108,9 +108,9 @@ app.addEventListener('click', (event) => {
     announce('Możesz zacząć od nowa.');
     return;
   }
-  if (action === 'bird-tab') {
+  if (action === 'bird-tab' || action === 'linden-detail') {
     // Keep the current comparison panel across reloads and pauses, including repeated switches.
-    state = { ...state, discoveries: { ...state.discoveries, 'bird-tab': [value] } };
+    state = { ...state, discoveries: { ...state.discoveries, [action]: [value] } };
     persistent = saveProgress(state, storage) && persistent;
     draw(false, { action, value });
     return;

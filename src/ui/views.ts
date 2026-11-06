@@ -8,6 +8,22 @@ import { bulbDiagram, ladybirdDiagram } from './diagrams.ts';
 import { assetUrl, button, escape, leafIcon, mysteryCrop, photo } from './html.ts';
 import { lessonView } from './lesson-view.ts';
 
+function atlasCard(card: (typeof atlas)[number], state: LessonState): string {
+  const fruit = state.discoveries['linden-detail']?.[0] === 'fruit';
+  const asset = card.id === 'linden' && fruit ? 'linden-fruit' : card.asset;
+  const alt =
+    card.id === 'linden'
+      ? fruit
+        ? 'Owoce lipy z podłużną podsadką przypominającą skrzydełko.'
+        : 'Sercowaty liść lipy drobnolistnej.'
+      : card.description;
+  const controls =
+    card.id === 'linden'
+      ? `<div class="atlas-detail-switch">${button('Liść', 'linden-detail', 'leaf', 'secondary')}${button('Owoc', 'linden-detail', 'fruit', 'secondary')}</div>`
+      : '';
+  return `<article class="atlas-card">${photo({ asset, alt })}${controls}<div class="atlas-copy"><h2>${card.name}</h2><p>${card.description}</p></div></article>`;
+}
+
 function home(state: LessonState): string {
   const completed = state.status === 'completed';
   return `<section class="home-hero"><div class="hero-copy"><p class="eyebrow">PRZYRODA · KLASA 4</p><h1 id="page-title" tabindex="-1">Wielkie odkrycia.<br><em>Tuż za oknem.</em></h1><p class="lead">Kto usiadł na płocie? Poszukaj tropów wśród roślin, ptaków i małych sąsiadów.</p><p class="duration">Około 30 minut · możesz robić przerwy</p>${completed ? '<p class="completion-badge">✓ Lekcja ukończona</p>' : ''}<div class="actions">${button(completed ? 'Wróć do odkryć' : state.status === 'active' ? 'Wróć do lekcji →' : 'Zaczynam →', completed ? 'discoveries' : 'start', '', 'primary')}${completed ? button('Otwórz atlas', 'atlas', '', 'secondary') : ''}</div><p class="small-note">Wystarczy ekran i twoja ciekawość.</p>${state.status !== 'new' ? button('Zacznij od nowa', 'restart', '', 'text-button') : ''}</div><div class="hero-picture">${completed ? photo({ asset: 'mystery', alt: 'Sroka na płocie z długim ogonem i czarno-białymi piórami.', caption: 'Zagadka rozwiązana · sroka' }, false) : mysteryCrop()}<span class="photo-note">${completed ? 'Zauważasz już więcej.' : 'Pierwszy trop czeka na ciebie'}</span></div></section><section class="journey-intro"><div><p class="eyebrow">TWOJA MAŁA WYPRAWA</p><h2>Osiem przystanków. Jedna zagadka.</h2></div><div class="journey-path"><span><b>01</b> Postaw hipotezę</span><span><b>02–07</b> Szukaj szczegółów</span><span><b>08</b> Zobacz drugi kadr</span></div></section>`;
@@ -28,7 +44,7 @@ function atlasView(state: LessonState): string {
     )
     .join(
       '',
-    )}</div>${state.atlasPair.length ? '<p class="small-note">Porównanie do bieżącego zadania. Wybierz grupę, aby zobaczyć cały atlas.</p>' : ''}<div class="atlas-grid">${cards.map((card) => `<article class="atlas-card">${photo({ asset: card.asset, alt: card.description })}<div class="atlas-copy"><h2>${card.name}</h2><p>${card.description}</p></div></article>`).join('')}</div></section>`;
+    )}</div>${state.atlasPair.length ? '<p class="small-note">Porównanie do bieżącego zadania. Wybierz grupę, aby zobaczyć cały atlas.</p>' : ''}<div class="atlas-grid">${cards.map((card) => atlasCard(card, state)).join('')}</div></section>`;
 }
 
 function sourcesView(): string {
