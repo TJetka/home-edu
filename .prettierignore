@@ -1,0 +1,8 @@
+dist/
+node_modules/
+test-results/
+playwright-report/
+.cache/
+PRD(8).md
+src/content/assets.json
+package-lock.json

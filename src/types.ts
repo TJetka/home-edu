@@ -10,8 +10,19 @@ export interface Option {
   picture?: Picture;
 }
 
-export type StepKind = 'hypothesis' | 'detail' | 'explore' | 'quiz' | 'bulb' | 'plant'
-  | 'order' | 'map' | 'night' | 'spots' | 'reveal' | 'reflection';
+export type StepKind =
+  | 'hypothesis'
+  | 'detail'
+  | 'explore'
+  | 'quiz'
+  | 'bulb'
+  | 'plant'
+  | 'order'
+  | 'map'
+  | 'night'
+  | 'spots'
+  | 'reveal'
+  | 'reflection';
 
 export interface Step {
   id: string;

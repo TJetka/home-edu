@@ -4,7 +4,9 @@ import { steps } from '../../src/content/lesson.ts';
 import { answerFor, canContinue, initialState, parseState, reduce } from '../../src/state.ts';
 import type { LessonState } from '../../src/types.ts';
 
-function at(id: string): LessonState { return { ...initialState(), status: 'active', view: 'lesson', stepId: id }; }
+function at(id: string): LessonState {
+  return { ...initialState(), status: 'active', view: 'lesson', stepId: id };
+}
 
 test('wrong answer → hint → retry → second wrong answer explains without blocking', () => {
   let s = reduce(at('basil-use'), { type: 'select', id: 'fern' });
@@ -22,7 +24,13 @@ test('wrong answer → hint → retry → second wrong answer explains without b
 
 test('correct retry and explanation-first are both valid learning paths', () => {
   let s = reduce(at('basil-use'), { type: 'select', id: 'fern' });
-  for (const action of [{ type: 'check' }, { type: 'retry' }, { type: 'select', id: 'basil' }, { type: 'check' }] as const) s = reduce(s, action);
+  for (const action of [
+    { type: 'check' },
+    { type: 'retry' },
+    { type: 'select', id: 'basil' },
+    { type: 'check' },
+  ] as const)
+    s = reduce(s, action);
   assert.equal(answerFor(s).status, 'correct');
   const revealed = reduce(at('basil-use'), { type: 'explain' });
   assert.equal(answerFor(revealed).attempts, 0);
@@ -91,12 +99,22 @@ test('each initial hypothesis and both accepted final clues remain valid', () =>
 });
 
 test('corrupted, incompatible and malicious saves return a fresh usable state', () => {
-  const bad = [null, '{', 'null', '[]', '{}', JSON.stringify({ ...initialState(), version: 2 }),
+  const bad = [
+    null,
+    '{',
+    'null',
+    '[]',
+    '{}',
+    JSON.stringify({ ...initialState(), version: 2 }),
     JSON.stringify({ ...initialState(), stepId: 'missing' }),
     JSON.stringify({ ...initialState(), dots: ['spot-1', 'spot-1'] }),
     JSON.stringify({ ...initialState(), discoveries: { windowsill: ['<script>'] } }),
-    JSON.stringify({ ...initialState(), answers: { 'basil-use': { selected: ['invalid'], attempts: 0, status: 'answering' } } }),
-    JSON.stringify({ ...initialState(), view: 'discoveries' })];
+    JSON.stringify({
+      ...initialState(),
+      answers: { 'basil-use': { selected: ['invalid'], attempts: 0, status: 'answering' } },
+    }),
+    JSON.stringify({ ...initialState(), view: 'discoveries' }),
+  ];
   for (const raw of bad) assert.deepEqual(parseState(raw), initialState());
 });
 
@@ -109,7 +127,12 @@ test('tiny end-to-end state pipeline visits eight stations and completes before 
     if (step.kind === 'hypothesis') s = reduce(s, { type: 'hypothesis', id: 'unknown' });
     else if (step.kind === 'detail') s = reduce(s, { type: 'detail', id: 'body' });
     else if (step.accepted) s = reduce(s, { type: 'explain' });
-    else s = reduce(s, { type: 'explore', key: step.id, id: step.kind === 'plant' ? 'spring' : step.kind === 'reveal' ? 'revealed' : 'example' });
+    else
+      s = reduce(s, {
+        type: 'explore',
+        key: step.id,
+        id: step.kind === 'plant' ? 'spring' : step.kind === 'reveal' ? 'revealed' : 'example',
+      });
     s = reduce(s, { type: 'next' });
   }
   assert.equal(visited.size, 8);

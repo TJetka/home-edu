@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
@@ -11,11 +13,14 @@
     "build": "npm run typecheck && vite build && node scripts/build-info.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test:e2e": "playwright test",
-    "check": "npm run test && npm run build && npm run test:e2e"
+    "check": "npm run format:check && npm test && npm run build && npm run test:e2e",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",
     "typescript": "7.0.2",
-    "vite": "8.3.5"
+    "vite": "8.3.5",
+    "prettier": "3.9.10"
   }
 }
