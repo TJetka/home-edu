@@ -75,7 +75,7 @@ test('complete lesson with local assets, every interaction, atlas and optional d
     else if (step.kind === 'night') {
       await press(page, 'explore', `${step.id}|lamp`);
       await expect(
-        page.getByText('Przyjrzyj się temu, co leży na ziemi obok kosza.'),
+        page.locator('#main').getByText('Przyjrzyj się temu, co leży na ziemi obok kosza.'),
       ).toBeVisible();
       await press(page, 'explore', `${step.id}|bin`);
     } else if (step.kind === 'reveal') {
